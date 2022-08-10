@@ -21,6 +21,10 @@ packer.startup(
   use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate"})
   -- lspconfig
   use({ "neovim/nvim-lspconfig", "williamboman/nvim-lsp-installer"})
+  -- telescope (fzf tool)
+  use { 'nvim-telescope/telescope.nvim', requires = { "nvim-lua/plenary.nvim" } }
+  -- dashboard
+  use("glepnir/dashboard-nvim")
   -----------------------------------
 end
 )
