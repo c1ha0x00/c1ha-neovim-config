@@ -13,6 +13,8 @@ require("plugin-config.bufferline")
 require("plugin-config.lualine")
 require("plugin-config.nvim-treesitter")
 require("plugin-config.telescope")
+require("plugin-config.dashboard")
+require("plugin-config.project")
 
 -- 快捷键映射
 require("keybindings")
