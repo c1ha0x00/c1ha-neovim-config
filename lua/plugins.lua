@@ -19,8 +19,9 @@ packer.startup(
   use("arkav/lualine-lsp-progress")
   -- treesitter
   use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate"})
-  -- lspconfig
-  use({ "neovim/nvim-lspconfig", "williamboman/nvim-lsp-installer"})
+  -- LSP & lspconfig
+  use("williamboman/nvim-lsp-installer")
+  use({ "neovim/nvim-lspconfig" })
   -- telescope (fzf tool)
   use { "nvim-telescope/telescope.nvim", requires = { "nvim-lua/plenary.nvim" } }
   -- dashboard
