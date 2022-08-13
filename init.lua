@@ -19,5 +19,5 @@ require("plugin-config.project")
 -- 快捷键映射
 require("keybindings")
 
--- 内置LSP (新增)
-require("lsp.setup")
+-- mason 
+require("plugin-config.mason")
