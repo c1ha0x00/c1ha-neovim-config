@@ -11,6 +11,12 @@ if not status then
   return
 end
 
+local status, lspconfig = pcall(require, "lspconfig")
+if not status then
+    vim.notify("没有找到 lspconfig")
+  return
+end
+
 mason.setup{
     ui = {
         icons = {
@@ -23,4 +29,22 @@ mason.setup{
 
 mason_lspconfig.setup {
      ensure_installed = { "sumneko_lua", "rust_analyzer" },
+}
+
+mason_lspconfig.setup_handlers({
+    function (server_name)
+        require("lspconfig")[server_name].setup {
+        }
+    end
+})
+
+lspconfig.sumneko_lua.setup {
+  settings = {
+    Lua = {
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = {'vim'},
+      },
+    },
+  },
 }
