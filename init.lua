@@ -21,3 +21,6 @@ require("keybindings")
 
 -- mason 
 require("plugin-config.mason")
+
+-- neovide
+require("neovide")
