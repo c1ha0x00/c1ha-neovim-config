@@ -2,7 +2,7 @@ local packer = require("packer")
 packer.startup(
   function(use)
   -- Packer 可以管理自己本身
-  use ('wbthomason/packer.nvim')
+  use('wbthomason/packer.nvim')
   ----------- colorschemes ----------
   -- tender
   use("jacoborus/tender.vim")
@@ -31,6 +31,23 @@ packer.startup(
   use("glepnir/dashboard-nvim")
   -- project
   use("ahmedkhalf/project.nvim")
+
+  -- cmp
+  use {
+      -- cmp
+      'hrsh7th/nvim-cmp',
+      -- snippet engine
+      'hrsh7th/cmp-vsnip',
+      'hrsh7th/vim-vsnip',
+      -- sources
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-cmdline',
+      'amarakon/nvim-cmp-buffer-lines',
+      -- snippets 
+      "rafamadriz/friendly-snippets",
+    }
   -----------------------------------
 end
 )
