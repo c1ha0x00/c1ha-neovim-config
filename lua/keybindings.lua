@@ -5,6 +5,8 @@ local map = vim.api.nvim_set_keymap
 -- 复用opt参数
 local opt = { noremap = true, silent = true }
 
+-- 取消 s 默认功能
+map("n", "s", "", opt)
 -- windows 分屏快捷键
 map("n", "sv", ":vsp<CR>", opt)
 map("n", "sh", ":sp<CR>", opt)
@@ -102,4 +104,14 @@ pluginKeys.telescopeList = {
   }
 }
 
+-- lsp 
+map("n", "<leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>", opt)
+map("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opt)
+map("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opt)
+map("n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opt)
+--local opts = { noremap=true, silent=true }
+--vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
+--vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
+--vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+--vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 return pluginKeys
