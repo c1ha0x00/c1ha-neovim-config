@@ -20,7 +20,7 @@ require("plugin-config.project")
 require("keybindings")
 
 -- mason 
-require("plugin-config.mason")
+require("plugin-config.lsp.mason")
 
 -- cmp
 require("plugin-config.cmp")
