@@ -19,7 +19,7 @@ require("plugin-config.project")
 -- 快捷键映射
 require("keybindings")
 
--- mason 
+-- lsp & mason 
 require("plugin-config.lsp.mason")
 
 -- cmp
