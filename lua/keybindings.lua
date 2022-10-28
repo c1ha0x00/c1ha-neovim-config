@@ -49,24 +49,24 @@ local pluginKeys = {}
 -- alt + m 开关tree
 map("n", "<A-m>", ":NvimTreeToggle<CR>", opt)
 -- 列表快捷键
-pluginKeys.nvimTreeList= {
+pluginKeys.nvimTreeList = {
   -- 打开文件或文件夹
-  { key = {"<CR>", "o", "<2-LeftMouse>"}, action = "edit"},
+  { key = { "<CR>", "o", "<2-LeftMouse>" }, action = "edit" },
   -- 分屏打开文件
-  { key = "v", action = "vsplit"},
-  { key = "h", action = "split"},
+  { key = "v", action = "vsplit" },
+  { key = "h", action = "split" },
   -- 显示隐藏文件
-  { key = "i", action = "toggle_igonred"}, -- Ignore(node_modules)
-  { key = ".", action = "toggle_dotfiles"}, -- Hide (dotefiles)
+  { key = "i", action = "toggle_igonred" }, -- Ignore(node_modules)
+  { key = ".", action = "toggle_dotfiles" }, -- Hide (dotefiles)
   -- 文件操作
-  { key = "<F5>", action = "refresh"},
-  { key = "a", action = "create"},
-  { key = "d", action = "remove"},
-  { key = "r", action = "rename"},
-  { key = "x", action = "cut"},
-  { key = "c", action = "copy"},
-  { key = "p", action = "paste"},
-  { key = "s", action = "system_open"},
+  { key = "<F5>", action = "refresh" },
+  { key = "a", action = "create" },
+  { key = "d", action = "remove" },
+  { key = "r", action = "rename" },
+  { key = "x", action = "cut" },
+  { key = "c", action = "copy" },
+  { key = "p", action = "paste" },
+  { key = "s", action = "system_open" },
 }
 
 -- bufferline
@@ -104,14 +104,39 @@ pluginKeys.telescopeList = {
   }
 }
 
--- lsp 
+-- lsp
 map("n", "<leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>", opt)
 map("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opt)
 map("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opt)
 map("n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opt)
 --local opts = { noremap=true, silent=true }
---vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
+--vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, opts)
 --vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 --vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
---vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
+--vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, opts)
+
+pluginKeys.map_lsp_on_attach = function(client, bufnr)
+  -- Enable completion triggered by <c-x><c-o>
+  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  -- Mappings.
+  -- See `:help vim.lsp.*` for documentation on any of the below functions
+  local bufopts = { noremap = true, silent = true, buffer = bufnr }
+  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+  vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+  vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, bufopts)
+  vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
+  vim.keymap.set('n', '<leader>wl', function()
+    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+  end, bufopts)
+  vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, bufopts)
+  vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
+  vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
+  vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+  vim.keymap.set('n', '<leader>f', function() vim.lsp.buf.format { async = true } end, bufopts)
+end
+
 return pluginKeys
