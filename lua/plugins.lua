@@ -54,6 +54,9 @@ packer.startup(
       -- snippets
       "rafamadriz/friendly-snippets",
     }
+
+    -- transparent
+    use("xiyaowong/nvim-transparent")
     -----------------------------------
   end
 )

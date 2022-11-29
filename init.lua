@@ -15,6 +15,7 @@ require("plugin-config.nvim-treesitter")
 require("plugin-config.telescope")
 require("plugin-config.dashboard")
 require("plugin-config.project")
+require("plugin-config.nvim-transparent")
 
 -- 快捷键映射
 require("keybindings")
