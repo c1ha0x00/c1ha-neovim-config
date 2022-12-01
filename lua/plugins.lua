@@ -4,10 +4,8 @@ packer.startup(
     -- Packer 可以管理自己本身
     use('wbthomason/packer.nvim')
     ----------- colorschemes ----------
-    -- tender
-    use("jacoborus/tender.vim")
-    -- tokyonight
-    use("folke/tokyonight.nvim")
+    use('folke/tokyonight.nvim')
+    use('sainnhe/everforest')
     -----------------------------------
     ----------- plugins ---------------
     -- nvim-tree
